@@ -8,6 +8,9 @@
     "grunt-autoprefixer": "~0.7.2",
     "express": "^4.4.1",
     "grunt-express-server": "^0.4.17",
-    "grunt-contrib-coffee":"~0.10.1"
+    "grunt-contrib-coffee":"~0.10.1",
+    "mongodb": "*",
+    "mongoskin": "*",
+    "bcrypt": "*"
   }
 }

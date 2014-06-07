@@ -2,6 +2,11 @@
 /*
   GET users listing.
  */
-exports.list = function(req, res) {
-  return res.send("respond with a listing");
+exports.user = function(db) {
+  return function(req, res) {
+    return db.collection('user').find().toArray(function(err, items) {
+      console.log(err, items);
+      return res.json(items);
+    });
+  };
 };
