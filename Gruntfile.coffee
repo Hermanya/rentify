@@ -4,9 +4,6 @@ module.exports = (grunt) ->
     watch:
       options:
         livereload: true
-      coffeeAssets:
-        files: '_scripts/*.coffee'
-        tasks: ['coffee:compileAssets']
       coffeeServer:
         files: 'server.coffee'
         tasks: ['coffee:compileServer']
@@ -26,22 +23,18 @@ module.exports = (grunt) ->
       options:
         configFile: 'coffeelint.json'
     coffee:
-      compileAssets:
-        expand: true
-        flatten: true
-        cwd: '_scripts'
-        src: ['*.coffee']
-        dest: 'public/scripts'
-        ext: '.js'
+
       compileRoutes:
         options:
           bare: true
-        # cwd: '_routes'
-        # src: ['*.coffee']
-        # dest: 'routes'
-        # ext: '.js'
-        files:
-          'routes/get.js':'_routes/get.coffee'
+        expand: true
+        flatten: true
+        cwd: '_routes'
+        src: ['*.coffee']
+        dest: 'routes'
+        ext: '.js'
+        # files:
+        #   'routes/get.js':'_routes/get.coffee'
       compileServer:
         files:
           'server.js': 'server.coffee'
