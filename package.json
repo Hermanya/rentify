@@ -1,0 +1,13 @@
+{
+  "name": "rentify",
+  "version": "0.0.0",
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "*",
+    "grunt-coffeelint": "*",
+    "grunt-autoprefixer": "~0.7.2",
+    "express": "^4.4.1",
+    "grunt-express-server": "^0.4.17",
+    "grunt-contrib-coffee":"~0.10.1"
+  }
+}

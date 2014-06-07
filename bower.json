@@ -1,0 +1,7 @@
+{
+  "name": "rentify",
+  "version": "0.0.0",
+  "dependencies": {
+    "ratchet": "~2.0.2"
+  }
+}
