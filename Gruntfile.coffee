@@ -5,7 +5,7 @@ module.exports = (grunt) ->
       options:
         livereload: true
       coffeeAssets:
-        files: 'CoffeeScripts/*.coffee'
+        files: '_scripts/*.coffee'
         tasks: ['coffee:compileAssets']
       coffeeServer:
         files: 'server.coffee'
@@ -29,7 +29,7 @@ module.exports = (grunt) ->
       compileAssets:
         expand: true
         flatten: true
-        cwd: 'CoffeeScripts'
+        cwd: '_scripts'
         src: ['*.coffee']
         dest: 'public/scripts'
         ext: '.js'
