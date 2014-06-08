@@ -30,3 +30,9 @@ html{
 	box-shadow: inset 0 0 3px #999;
 	padding: 5px;
 }
+
+#about {
+	background-image: url('/graphics/bg-pattern.jpg');
+	background-repeat: repeat-x repeat-y;
+	color: white;
+}

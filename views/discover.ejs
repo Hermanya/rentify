@@ -1,0 +1,71 @@
+<%- include header %>
+
+  <body>
+    <header class="bar bar-nav">
+      <h1 class="title">Discover</h1>
+    </header>
+
+    <nav class="bar bar-tab">
+      <a class="tab-item" href="/search">
+        <span class="icon icon-search"></span>
+        <span class="tab-label">Search</span>
+      </a>
+      <a class="tab-item active" href="/discover">
+        <span class="icon icon-star"></span>
+        <span class="tab-label">Discover</span>
+      </a>
+      <a class="tab-item" href="/me">
+        <span class="icon icon-person"></span>
+        <span class="tab-label">Profile</span>
+      </a>
+      <a class="tab-item" href="/about">
+        <span class="icon icon-more"></span>
+        <span class="tab-label">About</span>
+      </a>
+      <a class="tab-item" href="/add">
+        <span class="icon icon-plus"></span>
+        <span class="tab-label">Add Posting</span>
+      </a>
+    </nav>
+
+    <div class="content">
+        <div class="content-padded text-center">
+          Fun things to rent
+        </div>
+        <ul class="table-view">
+          <li class="table-view-cell media">
+            <a class="navigate-right">
+              <img class="media-object pull-left" src="graphics/sample-4.jpg" width="100" height="100">
+              <div class="media-body">
+                A real old Nintendo
+                <p>Anyone wants to play that old good Mario let me know, I can rent my Nintendo to you for cheap.</p>
+              </div>
+            </a>
+          </li>
+          <li class="table-view-cell media">
+            <a class="navigate-right">
+              <img class="media-object pull-left" src="graphics/sample-2.jpg" width="100" height="100">
+              <div class="media-body">
+                Bongo Drums
+                <p>My neighbours are not pleased with me dropping a beat on these ones anymore, available for rent.</p>
+              </div>
+            </a>
+          </li>
+          <li class="table-view-cell media">
+            <a class="navigate-right">
+              <img class="media-object pull-left" src="graphics/sample-3.jpg" width="100" height="100">
+              <div class="media-body">
+                Anonymous Mask
+                <p>You can rent this mask from me. I'm sure your friends will think it's pretty cool.</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <div class="text-center">
+          <a>Load more suggestions...</a>
+        </div>
+    </div>
+
+  </body>
+
+<%- include footer %>
