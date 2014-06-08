@@ -2,3 +2,15 @@ html{
   font-size: 1em;
 }
 /*# sourceMappingURL=main.css.map */
+
+.float-right {
+	float: right;
+}
+
+.float-left {
+	float: left;
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}
