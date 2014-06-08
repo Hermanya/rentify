@@ -20,7 +20,7 @@ exports.me = (req, res) ->
 
 exports.debug = (mongodb, db) ->
   return (req, res) ->
-    db.collection('user').find().toArray((err, users) ->
+    db.collection('item').find().toArray((err, users) ->
       if err or users is null
         res.json({error: 'User'})
       else

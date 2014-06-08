@@ -5,7 +5,6 @@
 exports.user = (db,fileSystem,path,bcrypt)->
   return (req, res)->
     user = {}
-    console.log req.body, 'ok'
     u = req.body
     if not (u.name and u.email and u.password and u.address)
       res.json {error: "Form is incomplete"}
@@ -19,7 +18,7 @@ exports.user = (db,fileSystem,path,bcrypt)->
     user.offeredItems = []
     user.acceptedItems = []
     user.rating = 10
-    console.log user
+
     db.collection('user').find({email:user.email}).toArray (err,users)->
       if users.length is 0
         db.collection('user').insert user, (err)->
@@ -36,8 +35,9 @@ exports.user = (db,fileSystem,path,bcrypt)->
 exports.item = (db,fileSystem,path) ->
   return (req,res) ->
     tmp = req.body
-    if not (tmp.name and tmp.description and req.files.picture and tmp.charge)
+    if not (tmp.name and tmp.description and req.files.image and tmp.charge)
       res.json {error: "Form is incomplete"}
+      return
     item = {}
     item.name = tmp.name
     item.description = tmp.description
@@ -49,8 +49,9 @@ exports.item = (db,fileSystem,path) ->
     item.tags = [tmp.name,tmp.description].join(' ').replace(/[\.,]/g,' ')
     db.collection('item').insert(item, (err) ->
       if err is null
-        tempPath = req.files.picture
+        tempPath = req.files.image.path
         targetPath = path.resolve "./images/" + item._id
+        console.log tempPath, targetPath
         fileSystem.rename tempPath, targetPath, (err) ->
         if err
           res.json err

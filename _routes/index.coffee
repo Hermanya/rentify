@@ -36,3 +36,9 @@ exports.add = (req, res) ->
 
 exports.search = (req, res) ->
 	res.render 'search', {}
+
+exports.discover = (req, res) ->
+	res.render 'discover', {}
+
+exports.about = (req, res) ->
+	res.render 'about', {}

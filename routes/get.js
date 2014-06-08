@@ -29,7 +29,7 @@ exports.me = function(req, res) {
 
 exports.debug = function(mongodb, db) {
   return function(req, res) {
-    return db.collection('user').find().toArray(function(err, users) {
+    return db.collection('item').find().toArray(function(err, users) {
       if (err || users === null) {
         return res.json({
           error: 'User'

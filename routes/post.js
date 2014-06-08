@@ -6,7 +6,6 @@ exports.user = function(db, fileSystem, path, bcrypt) {
   return function(req, res) {
     var salt, u, user;
     user = {};
-    console.log(req.body, 'ok');
     u = req.body;
     if (!(u.name && u.email && u.password && u.address)) {
       res.json({
@@ -23,7 +22,6 @@ exports.user = function(db, fileSystem, path, bcrypt) {
     user.offeredItems = [];
     user.acceptedItems = [];
     user.rating = 10;
-    console.log(user);
     return db.collection('user').find({
       email: user.email
     }).toArray(function(err, users) {
@@ -55,10 +53,12 @@ exports.item = function(db, fileSystem, path) {
   return function(req, res) {
     var item, tmp;
     tmp = req.body;
-    if (!(tmp.name && tmp.description && req.files.picture && tmp.charge)) {
+    console.log(req.body, req.files);
+    if (!(tmp.name && tmp.description && req.files.image && tmp.charge)) {
       res.json({
         error: "Form is incomplete"
       });
+      return;
     }
     item = {};
     item.name = tmp.name;
@@ -73,8 +73,9 @@ exports.item = function(db, fileSystem, path) {
     return db.collection('item').insert(item, function(err) {
       var targetPath, tempPath;
       if (err === null) {
-        tempPath = req.files.picture;
+        tempPath = req.files.image.path;
         targetPath = path.resolve("./images/" + item._id);
+        console.log(tempPath, targetPath);
         fileSystem.rename(tempPath, targetPath, function(err) {});
         if (err) {
           return res.json(err);
