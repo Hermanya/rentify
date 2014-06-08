@@ -16,10 +16,11 @@ bcrypt = require 'bcrypt'
 app = express()
 
 app.set 'port', process.env.PORT || 3000
+app.set('view engine', 'ejs');
 app.use express.static(path.join(__dirname, 'public'))
 
-
-app.get '/get/user', get.user db
+app.get '/', other.root
+app.get '/get/user/:id', get.user mongodb, db
 app.post '/post/user', post.user db, fileSystem, path, bcrypt
 app.get '/logout', other.logout
 app.get '/loginHandler', other.loginHandler db, bcrypt

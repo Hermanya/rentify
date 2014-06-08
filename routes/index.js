@@ -34,3 +34,11 @@ exports.logout = function(req, res) {
     logged: "out"
   });
 };
+
+exports.root = function(req, res) {
+  if (req.session && req.session.user === void 0) {
+    return res.render('signup', {});
+  } else {
+    return res.render('search', {});
+  }
+};
