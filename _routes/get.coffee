@@ -2,5 +2,9 @@
   GET users listing.
 ###
 
-exports.list = (req, res)->
-  res.send "respond with a resource"
+exports.user = (db)->
+  (req, res)->
+    db.collection('user').find().toArray((err, items)->
+      console.log err, items
+      res.json items
+    )

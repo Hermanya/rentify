@@ -9,6 +9,9 @@
     "grunt-coffeelint": "*",
     "grunt-contrib-coffee": "~0.10.1",
     "grunt-contrib-watch": "*",
-    "grunt-express-server": "^0.4.17"
+    "grunt-express-server": "^0.4.17",
+    "mongodb": "*",
+    "mongoskin": "*",
+    "bcrypt": "*"
   }
 }
