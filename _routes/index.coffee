@@ -9,7 +9,7 @@ exports.loginHandler = (db,bcrypt) ->
 	    bcrypt.compare password, user.hash, (err, resp) ->
 	      if resp
 	        req.session.user = user
-	        res.json user
+	        res.render 'search', {}
 	      else
 	        res.json {error: 'Wrong email or password'}
 
@@ -25,8 +25,14 @@ exports.root = (req, res) ->
 	else
 	  res.render 'signin', {}
 
+exports.signin = (req, res) ->
+	res.render 'signin', {}
+
 exports.signup = (req, res) ->
 	res.render 'signup', {}
 
 exports.add = (req, res) ->
 	res.render 'additem', {}
+
+exports.search = (req, res) ->
+	res.render 'search', {}

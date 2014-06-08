@@ -24,7 +24,7 @@ exports.user = (db,fileSystem,path,bcrypt)->
       if users.length is 0
         db.collection('user').insert user, (err)->
           if err is null
-            res.json user
+            res.render 'search', {}
           else
             res.json {error: "Internal error, try again"}
       else
@@ -55,7 +55,7 @@ exports.item = (db,fileSystem,path) ->
         if err
           res.json err
         else
-          res.json item
+          return res.render 'item', item
       else
         res.json {error: "Internal error, try again"}
     )

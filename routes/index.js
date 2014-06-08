@@ -16,7 +16,7 @@ exports.loginHandler = function(db, bcrypt) {
       return bcrypt.compare(password, user.hash, function(err, resp) {
         if (resp) {
           req.session.user = user;
-          return res.json(user);
+          return res.render('search', {});
         } else {
           return res.json({
             error: 'Wrong email or password'
@@ -43,8 +43,12 @@ exports.root = function(req, res) {
   }
 };
 
+exports.signin = function(req, res) {
+  return res.render('signin', {});
+};
+
 exports.signup = function(req, res) {
-  return res.render('singup', {});
+  return res.render('signup', {});
 };
 
 exports.add = function(req, res) {
