@@ -23,6 +23,7 @@ exports.user = (db,fileSystem,path,bcrypt)->
       if users.length is 0
         db.collection('user').insert user, (err)->
           if err is null
+            req.session.user = user
             res.render 'search', {}
           else
             res.json {error: "Internal error, try again"}
@@ -48,6 +49,7 @@ exports.item = (db,fileSystem,path) ->
     item.ownerId = req.session.user._id
     item.tags = [tmp.name,tmp.description]
     .join(' ')
+    .toLowerCase()
     .replace(/[\.,]/g,' ')
     .split(' ')
     db.collection('item').insert(item, (err) ->

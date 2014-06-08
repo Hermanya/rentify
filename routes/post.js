@@ -28,6 +28,7 @@ exports.user = function(db, fileSystem, path, bcrypt) {
       if (users.length === 0) {
         return db.collection('user').insert(user, function(err) {
           if (err === null) {
+            req.session.user = user;
             return res.render('search', {});
           } else {
             return res.json({
@@ -68,7 +69,7 @@ exports.item = function(db, fileSystem, path) {
     }
     item.status = 'available';
     item.ownerId = req.session.user._id;
-    item.tags = [tmp.name, tmp.description].join(' ').replace(/[\.,]/g, ' ').split(' ');
+    item.tags = [tmp.name, tmp.description].join(' ').toLowerCase().replace(/[\.,]/g, ' ').split(' ');
     return db.collection('item').insert(item, function(err) {
       var targetPath, tempPath;
       if (err === null) {

@@ -40,7 +40,7 @@ exports.item = (mongodb, db) ->
 
 exports.searchResults = (mongodb, db) ->
   return (req, res) ->
-    tags = req.body.query.split(' ')
+    tags = req.body.query.toLowerCase().split(' ')
     db.collection('item')
     .find({tags:{$in:tags}})
     .toArray((err, items) ->

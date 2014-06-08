@@ -60,7 +60,7 @@ exports.item = function(mongodb, db) {
 exports.searchResults = function(mongodb, db) {
   return function(req, res) {
     var tags;
-    tags = req.body.query.split(' ');
+    tags = req.body.query.toLowerCase().split(' ');
     return db.collection('item').find({
       tags: {
         $in: tags
