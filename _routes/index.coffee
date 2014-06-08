@@ -26,7 +26,7 @@ exports.root = (req, res) ->
 	  res.render 'signin', {}
 
 exports.signup = (req, res) ->
-	res.render 'singup', {}
+	res.render 'signup', {}
 
 exports.add = (req, res) ->
 	res.render 'additem', {}
