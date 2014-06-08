@@ -54,3 +54,7 @@ exports.signup = function(req, res) {
 exports.add = function(req, res) {
   return res.render('additem', {});
 };
+
+exports.search = function(req, res) {
+  return res.render('search', {});
+};

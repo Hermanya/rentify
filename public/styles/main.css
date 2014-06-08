@@ -35,4 +35,6 @@ html{
 	background-image: url('/graphics/bg-pattern.jpg');
 	background-repeat: repeat-x repeat-y;
 	color: white;
+	border-radius: 7px;
+	padding: 5px;
 }
