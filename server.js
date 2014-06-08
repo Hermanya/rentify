@@ -49,7 +49,7 @@
 
   app.get('/', other.root);
 
-  app.get('/singup', other.signup);
+  app.get('/signup', other.signup);
 
   app.get('/add', other.add);
 

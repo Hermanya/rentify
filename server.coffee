@@ -28,7 +28,7 @@ app.use(session({
 app.use express.static(path.join(__dirname, 'public'))
 
 app.get '/', other.root
-app.get '/singup', other.signup
+app.get '/signup', other.signup
 app.get '/add', other.add
 app.get '/get/me', get.me
 app.get '/get/debug', get.debug mongodb, db
