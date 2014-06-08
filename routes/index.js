@@ -1,29 +1,26 @@
 exports.loginHandler = function(db, bcrypt) {
   return function(req, res) {
-    var collection, email;
+    var collection, email, password;
     email = req.body.email;
     collection = db.collection('user');
-    return collection.findOne({
+    collection.findOne({
       email: email
-    }, function(error, user) {
-      var password;
-      if (error || user === null) {
-        res.json({
+    }, function(error, user) {});
+    if (error || user === null) {
+      res.json({
+        error: 'Wrong email or password'
+      });
+    }
+    password = req.body.password;
+    return bcrypt.compare(password, user.hash, function(err, resp) {
+      if (resp) {
+        req.session.user = user;
+        return res.json(user);
+      } else {
+        return res.json({
           error: 'Wrong email or password'
         });
-        return;
       }
-      password = req.body.password;
-      return bcrypt.compare(password, user.hash, function(err, resp) {
-        if (resp) {
-          req.session.user = user;
-          return res.json(user);
-        } else {
-          return res.json({
-            error: 'Wrong email or password'
-          });
-        }
-      });
     });
   };
 };
@@ -36,9 +33,14 @@ exports.logout = function(req, res) {
 };
 
 exports.root = function(req, res) {
-  if (req.session && req.session.user === void 0) {
-    return res.render('signup', {});
+  console.log(req.session);
+  if (req.session) {
+    return res.render('search', req.session.user);
   } else {
-    return res.render('search', {});
+    return res.render('signin', {});
   }
+};
+
+exports.signup = function(req, res) {
+  return res.render('singup', {});
 };
