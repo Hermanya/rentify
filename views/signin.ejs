@@ -2,11 +2,11 @@
 
   <body>
     <header class="bar bar-nav">
-      <h1 class="title">Rentify</h1>
+      <h1 class="title">Login</h1>
     </header>
 
-    <nav class="bar bar-tab">
-      <a class="tab-item active" href="#">
+    <!-- nav class="bar bar-tab">
+      <a class="tab-item" href="#">
         <span class="icon icon-search"></span>
         <span class="tab-label">Search</span>
       </a>
@@ -14,7 +14,7 @@
         <span class="icon icon-star"></span>
         <span class="tab-label">Discover</span>
       </a>
-      <a class="tab-item" href="/me">
+      <a class="tab-item" href="#">
         <span class="icon icon-person"></span>
         <span class="tab-label">Profile</span>
       </a>
@@ -26,24 +26,19 @@
         <span class="icon icon-plus"></span>
         <span class="tab-label">Add Posting</span>
       </a>
-    </nav>
+    </nav -->
 
     <div class="content">
-      <ul class="table-view">
-        
 
+      <div class="content-padded">
+        <form method="POST" action="/loginHandler">
+          <input name="email" type="text" placeholder="steve@apple.com" />
+          <input name="password" type="password" placeholder="Your password..." />
+          <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        </form>
+      </div>
+      <a href="/signup" class="btn btn-link btn-block">Don't have an account?</a>
 
-        <li class="table-view-cell media">
-          <a class="navigate-right">
-            <img class="media-object pull-left" src="http://gobiking.ca/which-bike/comfort-bike-3-s.jpg" width="100" height="100">
-            <div class="media-body">
-              Item 1
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.</p>
-            </div>
-          </a>
-        </li>
-
-      </ul>
     </div>
 
   </body>

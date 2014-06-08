@@ -29,31 +29,33 @@
     </nav>
 
     <div class="content">
-      <form mathod="POST" action="/get/search/results">
-        <input type="search" placeholder="Search...">
-        <ul class="table-view">
-          <li class="table-view-cell">
-            <a class="navigate-right">
-              <span class="badge">Any</span>
-              Location
-            </a>
-          </li>
-          <li class="table-view-cell">
-            <a class="navigate-right">
-              <span class="badge">All</span>
-              Category
-            </a>
-          </li>
-          <li class="table-view-cell">
-            <a class="navigate-right">
-              <span class="badge">&#60; $20</span>
-              Charge
-            </a>
-          </li>
-        </ul>
-        <button type="submit" class="btn btn-primary btn-block">Search</button>
-      </form>
-      <button class="btn btn-negative btn-block btn-outlined">Clear</button>
+      <div class="content-padded">
+        <form method="POST" action="/get/search/results">
+          <input type="search" placeholder="Search...">
+          <ul class="table-view">
+            <li class="table-view-cell">
+              <a class="navigate-right">
+                <span class="badge">Any</span>
+                Location
+              </a>
+            </li>
+            <li class="table-view-cell">
+              <a class="navigate-right">
+                <span class="badge">All</span>
+                Category
+              </a>
+            </li>
+            <li class="table-view-cell">
+              <a class="navigate-right">
+                <span class="badge">&#60; $20</span>
+                Charge
+              </a>
+            </li>
+          </ul>
+          <button type="submit" class="btn btn-primary btn-block">Search</button>
+        </form>
+        <button class="btn btn-negative btn-block btn-outlined">Clear</button>
+      </div>
     </div>
 
   </body>

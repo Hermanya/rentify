@@ -45,4 +45,20 @@
     </div>
 
   </body>
-<%- include footer %>
+<script type="text/javascript">
+  // detect useragent and attach needed files
+  var ua = navigator.userAgent.toLowerCase();
+  if(ua.indexOf('iphone') != -1 || ua.indexOf('ipad') != -1) {
+    $("head").append("<link rel='stylesheet' href='components/ratchet/dist/css/ratchet-theme-ios.min.css' />");
+  } else if(ua.indexOf('android') != -1) {
+    $("head").append("<link rel='stylesheet' href='components/ratchet/dist/css/ratchet-theme-android.min.css' />");
+  } else {
+    // debug mode
+    $("head").append("<link rel='stylesheet' href='components/ratchet/dist/css/ratchet-theme-ios.min.css' />");
+  }
+  // do something when page fully loads
+  $(document).ready(function() {
+    console.log('page loaded');
+  });
+  </script>
+</html>
