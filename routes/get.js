@@ -24,7 +24,7 @@ exports.user = function(mongodb, db) {
  */
 
 exports.me = function(req, res) {
-  return res.render('user', req.session.user);
+  return res.render('profile', req.session.user);
 };
 
 exports.debug = function(mongodb, db) {
@@ -66,6 +66,7 @@ exports.searchResults = function(mongodb, db) {
         $in: tags
       }
     }).toArray(function(err, items) {
+      console.log(err, items);
       if (err || items === null) {
         return res.json({
           error: 'Not found'

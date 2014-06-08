@@ -74,7 +74,7 @@
 
   app.get('/add', other.add);
 
-  app.get('/get/me', get.me);
+  app.get('/me', get.me);
 
   app.get('/get/debug', get.debug(mongodb, db));
 
@@ -85,6 +85,8 @@
   app.post('/addItem', post.item(db, fileSystem, path));
 
   app.get('/logout', other.logout);
+
+  app.post('/searchResults', get.searchResults(mongodb, db));
 
   app.post('/loginHandler', other.loginHandler(db, bcrypt));
 

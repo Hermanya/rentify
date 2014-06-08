@@ -46,12 +46,14 @@ exports.item = (db,fileSystem,path) ->
       item.charge = 20
     item.status = 'available'
     item.ownerId = req.session.user._id
-    item.tags = [tmp.name,tmp.description].join(' ').replace(/[\.,]/g,' ')
+    item.tags = [tmp.name,tmp.description]
+    .join(' ')
+    .replace(/[\.,]/g,' ')
+    .split(' ')
     db.collection('item').insert(item, (err) ->
       if err is null
         tempPath = req.files.image.path
-        targetPath = path.resolve "./images/" + item._id
-        console.log tempPath, targetPath
+        targetPath = path.resolve "public/images/" + item._id
         fileSystem.rename tempPath, targetPath, (err) ->
         if err
           res.json err

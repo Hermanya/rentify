@@ -19,7 +19,6 @@ exports.logout = (req, res) ->
 	res.json {logged:"out"}
 
 exports.root = (req, res) ->
-	console.log req.session.user
 	if req.session.user
 	  res.render 'search', req.session.user
 	else

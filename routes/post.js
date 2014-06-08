@@ -53,7 +53,6 @@ exports.item = function(db, fileSystem, path) {
   return function(req, res) {
     var item, tmp;
     tmp = req.body;
-    console.log(req.body, req.files);
     if (!(tmp.name && tmp.description && req.files.image && tmp.charge)) {
       res.json({
         error: "Form is incomplete"
@@ -69,13 +68,12 @@ exports.item = function(db, fileSystem, path) {
     }
     item.status = 'available';
     item.ownerId = req.session.user._id;
-    item.tags = [tmp.name, tmp.description].join(' ').replace(/[\.,]/g, ' ');
+    item.tags = [tmp.name, tmp.description].join(' ').replace(/[\.,]/g, ' ').split(' ');
     return db.collection('item').insert(item, function(err) {
       var targetPath, tempPath;
       if (err === null) {
         tempPath = req.files.image.path;
-        targetPath = path.resolve("./images/" + item._id);
-        console.log(tempPath, targetPath);
+        targetPath = path.resolve("public/images/" + item._id);
         fileSystem.rename(tempPath, targetPath, function(err) {});
         if (err) {
           return res.json(err);

@@ -16,7 +16,7 @@ exports.user = (mongodb, db) ->
   GET users listing.
 ###
 exports.me = (req, res) ->
-  res.render 'user', req.session.user
+  res.render 'profile', req.session.user
 
 exports.debug = (mongodb, db) ->
   return (req, res) ->
@@ -44,6 +44,7 @@ exports.searchResults = (mongodb, db) ->
     db.collection('item')
     .find({tags:{$in:tags}})
     .toArray((err, items) ->
+      console.log err, items
       if err or items is null
         res.json({error: 'Not found'})
       else
