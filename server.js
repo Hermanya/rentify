@@ -51,6 +51,10 @@
 
   app.get('/signup', other.signup);
 
+  app.get('/signin', other.signin);
+
+  app.get('/search', other.search);
+
   app.get('/add', other.add);
 
   app.get('/get/me', get.me);
@@ -59,7 +63,7 @@
 
   app.get('/get/user/:id', get.user(mongodb, db));
 
-  app.post('/post/user', post.user(db, fileSystem, path, bcrypt));
+  app.post('/register', post.user(db, fileSystem, path, bcrypt));
 
   app.post('/post/item', post.item(db, fileSystem, path));
 

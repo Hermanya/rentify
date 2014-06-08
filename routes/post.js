@@ -30,7 +30,7 @@ exports.user = function(db, fileSystem, path, bcrypt) {
       if (users.length === 0) {
         return db.collection('user').insert(user, function(err) {
           if (err === null) {
-            return res.json(user);
+            return res.render('search', {});
           } else {
             return res.json({
               error: "Internal error, try again"
@@ -79,7 +79,7 @@ exports.item = function(db, fileSystem, path) {
         if (err) {
           return res.json(err);
         } else {
-          return res.json(item);
+          return res.render('item', item);
         }
       } else {
         return res.json({
