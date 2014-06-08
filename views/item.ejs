@@ -6,11 +6,11 @@
     </header>
 
     <nav class="bar bar-tab">
-      <a class="tab-item active" href="#">
+      <a class="tab-item active" href="/search">
         <span class="icon icon-search"></span>
         <span class="tab-label">Search</span>
       </a>
-      <a class="tab-item" href="#">
+      <a class="tab-item" href="/discover">
         <span class="icon icon-star"></span>
         <span class="tab-label">Discover</span>
       </a>
@@ -18,11 +18,11 @@
         <span class="icon icon-person"></span>
         <span class="tab-label">Profile</span>
       </a>
-      <a class="tab-item" href="#">
+      <a class="tab-item" href="/about">
         <span class="icon icon-more"></span>
         <span class="tab-label">About</span>
       </a>
-      <a class="tab-item" href="#">
+      <a class="tab-item" href="/add">
         <span class="icon icon-plus"></span>
         <span class="tab-label">Add Posting</span>
       </a>
@@ -30,24 +30,24 @@
 
     <div class="content">
       <div class="content-padded item-picture-holder text-center">
-        <img src="http://www.tayriver.org/pictures+maps+charts/kirks_kanoes.jpg" width="200" height="200" />
+        <img src="/images/<%= _id %>" width="200" height="200" />
       </div>
       <div class="text-center">
-        <h2>Brand New Canoe</h2>
+        <h2><%= name %></h2>
       </div>
       <ul class="table-view">
         <li class="table-view-cell">
           <a>
-            <span class="badge">$20 / day</span>
-            Charge
+            <span class="badge">$<%= charge %> / day</span>
+            Fee
           </a>
         </li>
       </ul>
       <div class="content-padded">
-        <a href="mailto:steve@somewhere.com" class="btn btn-positive btn-block"><span class="icon icon-compose"></span>Contact to rent</a>
+        <a href="mailto:bermanoleg@gmail.com" class="btn btn-positive btn-block"><span class="icon icon-compose"></span>Contact to rent</a>
       </div>
       <div class="text-center">
-        <a href="/get/user/id" class="btn btn-link">More stuff to rent from Steve...</a>
+        <a href="#" class="btn btn-link">More stuff to rent from the author...</a>
       </div>
     </div>
 

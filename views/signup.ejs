@@ -4,29 +4,6 @@
       <h1 class="title">Sign up</h1>
     </header>
 
-    <!-- nav class="bar bar-tab">
-      <a class="tab-item" href="#">
-        <span class="icon icon-search"></span>
-        <span class="tab-label">Search</span>
-      </a>
-      <a class="tab-item" href="#">
-        <span class="icon icon-star"></span>
-        <span class="tab-label">Discover</span>
-      </a>
-      <a class="tab-item" href="#">
-        <span class="icon icon-person"></span>
-        <span class="tab-label">Profile</span>
-      </a>
-      <a class="tab-item" href="#">
-        <span class="icon icon-more"></span>
-        <span class="tab-label">About</span>
-      </a>
-      <a class="tab-item" href="#">
-        <span class="icon icon-plus"></span>
-        <span class="tab-label">Add Posting</span>
-      </a>
-    </nav -->
-
     <div class="content">
 
       <form method="POST" action="/post/user">
@@ -45,20 +22,4 @@
     </div>
 
   </body>
-<script type="text/javascript">
-  // detect useragent and attach needed files
-  var ua = navigator.userAgent.toLowerCase();
-  if(ua.indexOf('iphone') != -1 || ua.indexOf('ipad') != -1) {
-    $("head").append("<link rel='stylesheet' href='components/ratchet/dist/css/ratchet-theme-ios.min.css' />");
-  } else if(ua.indexOf('android') != -1) {
-    $("head").append("<link rel='stylesheet' href='components/ratchet/dist/css/ratchet-theme-android.min.css' />");
-  } else {
-    // debug mode
-    $("head").append("<link rel='stylesheet' href='components/ratchet/dist/css/ratchet-theme-ios.min.css' />");
-  }
-  // do something when page fully loads
-  $(document).ready(function() {
-    console.log('page loaded');
-  });
-  </script>
-</html>
+<%- include footer %>

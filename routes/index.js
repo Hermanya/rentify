@@ -44,7 +44,7 @@ exports.root = function(req, res) {
 };
 
 exports.signup = function(req, res) {
-  return res.render('singup', {});
+  return res.render('signup', {});
 };
 
 exports.add = function(req, res) {
