@@ -29,13 +29,14 @@ app.use express.static(path.join(__dirname, 'public'))
 
 app.get '/', other.root
 app.get '/singup', other.signup
+app.get '/add', other.add
 app.get '/get/me', get.me
 app.get '/get/debug', get.debug mongodb, db
 app.get '/get/user/:id', get.user mongodb, db
 app.post '/post/user', post.user(db, fileSystem, path, bcrypt)
-app.post '/post/item', post.item(db, fileSystem, path, bcrypt)
+app.post '/post/item', post.item(db, fileSystem, path)
 app.get '/logout', other.logout
-app.get '/loginHandler', other.loginHandler db, bcrypt
+app.post '/loginHandler', other.loginHandler db, bcrypt
 
 
 http.createServer(app).listen(app.get('port'), ->

@@ -41,13 +41,21 @@ exports.item = (db,fileSystem,path) ->
     item = {}
     item.name = tmp.name
     item.description = tmp.description
-    item.charge = tmp.charge
+    item.charge = parseFloat tmp.charge
+    if isNaN item.charge
+      item.charge = 20
     item.status = 'available'
     item.ownerId = req.session.user._id
-    item.tags = []
+    item.tags = [tmp.name,tmp.description].join(' ').replace(/[\.,]/g,' ')
     db.collection('item').insert(item, (err) ->
       if err is null
-        res.json item
+        tempPath = req.files.picture
+        targetPath = path.resolve "./images/" + item._id
+        fileSystem.rename tempPath, targetPath, (err) ->
+        if err
+          res.json err
+        else
+          res.json item
       else
         res.json {error: "Internal error, try again"}
     )

@@ -63,13 +63,24 @@ exports.item = function(db, fileSystem, path) {
     item = {};
     item.name = tmp.name;
     item.description = tmp.description;
-    item.charge = tmp.charge;
+    item.charge = parseFloat(tmp.charge);
+    if (isNaN(item.charge)) {
+      item.charge = 20;
+    }
     item.status = 'available';
     item.ownerId = req.session.user._id;
-    item.tags = [];
+    item.tags = [tmp.name, tmp.description].join(' ').replace(/[\.,]/g, ' ');
     return db.collection('item').insert(item, function(err) {
+      var targetPath, tempPath;
       if (err === null) {
-        return res.json(item);
+        tempPath = req.files.picture;
+        targetPath = path.resolve("./images/" + item._id);
+        fileSystem.rename(tempPath, targetPath, function(err) {});
+        if (err) {
+          return res.json(err);
+        } else {
+          return res.json(item);
+        }
       } else {
         return res.json({
           error: "Internal error, try again"
