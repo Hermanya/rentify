@@ -35,7 +35,6 @@ exports.logout = function(req, res) {
 };
 
 exports.root = function(req, res) {
-  console.log(req.session.user);
   if (req.session.user) {
     return res.render('search', req.session.user);
   } else {
@@ -57,4 +56,12 @@ exports.add = function(req, res) {
 
 exports.search = function(req, res) {
   return res.render('search', {});
+};
+
+exports.discover = function(req, res) {
+  return res.render('discover', {});
+};
+
+exports.about = function(req, res) {
+  return res.render('about', {});
 };

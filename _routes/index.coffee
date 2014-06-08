@@ -19,7 +19,6 @@ exports.logout = (req, res) ->
 	res.json {logged:"out"}
 
 exports.root = (req, res) ->
-	console.log req.session.user
 	if req.session.user
 	  res.render 'search', req.session.user
 	else
@@ -36,3 +35,9 @@ exports.add = (req, res) ->
 
 exports.search = (req, res) ->
 	res.render 'search', {}
+
+exports.discover = (req, res) ->
+	res.render 'discover', {}
+
+exports.about = (req, res) ->
+	res.render 'about', {}

@@ -2,3 +2,5 @@ node_modules
 public/components
 Gruntfile.coffee
 index.html
+tmp
+public/images

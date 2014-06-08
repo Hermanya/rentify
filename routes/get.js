@@ -24,12 +24,12 @@ exports.user = function(mongodb, db) {
  */
 
 exports.me = function(req, res) {
-  return res.render('user', req.session.user);
+  return res.render('profile', req.session.user);
 };
 
 exports.debug = function(mongodb, db) {
   return function(req, res) {
-    return db.collection('user').find().toArray(function(err, users) {
+    return db.collection('item').find().toArray(function(err, users) {
       if (err || users === null) {
         return res.json({
           error: 'User'
@@ -66,6 +66,7 @@ exports.searchResults = function(mongodb, db) {
         $in: tags
       }
     }).toArray(function(err, items) {
+      console.log(err, items);
       if (err || items === null) {
         return res.json({
           error: 'Not found'

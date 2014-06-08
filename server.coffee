@@ -8,6 +8,8 @@ fileSystem = require 'fs'
 bodyParser = require 'body-parser'
 cookieParser = require 'cookie-parser'
 session = require 'express-session'
+methodOverride = require 'method-override'
+multer  = require 'multer'
 
 mongodb = require 'mongodb'
 mongoskin = require 'mongoskin'
@@ -19,7 +21,9 @@ app = express()
 
 app.set 'port', process.env.PORT || 3000
 app.set('view engine', 'ejs')
-app.use(bodyParser())
+app.set('uploadDir', path.join(__dirname+'./tmp'))
+app.use(bodyParser({uploadDir:path.join(__dirname+'./tmp'), keepExtensions: true}))
+app.use(multer({ dest: __dirname+'./tmp/'}))
 app.use(cookieParser())
 app.use(session({
   secret: 'keyboard cat'
@@ -30,13 +34,16 @@ app.get '/', other.root
 app.get '/signup', other.signup
 app.get '/signin', other.signin
 app.get '/search', other.search
+app.get '/discover', other.discover
+app.get '/about', other.about
 app.get '/add', other.add
-app.get '/get/me', get.me
+app.get '/me', get.me
 app.get '/get/debug', get.debug mongodb, db
 app.get '/get/user/:id', get.user mongodb, db
 app.post '/register', post.user(db, fileSystem, path, bcrypt)
-app.post '/post/item', post.item(db, fileSystem, path)
+app.post '/addItem', post.item(db, fileSystem, path)
 app.get '/logout', other.logout
+app.post '/searchResults', get.searchResults(mongodb, db)
 app.post '/loginHandler', other.loginHandler db, bcrypt
 
 
