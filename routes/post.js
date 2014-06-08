@@ -6,6 +6,7 @@ exports.user = function(db, fileSystem, path, bcrypt) {
   return function(req, res) {
     var salt, u, user;
     user = {};
+    console.log(req.body, 'ok');
     u = req.body;
     if (!(u.name && u.email && u.password && u.address)) {
       res.json({
@@ -22,6 +23,7 @@ exports.user = function(db, fileSystem, path, bcrypt) {
     user.offeredItems = [];
     user.acceptedItems = [];
     user.rating = 10;
+    console.log(user);
     return db.collection('user').find({
       email: user.email
     }).toArray(function(err, users) {
@@ -38,6 +40,39 @@ exports.user = function(db, fileSystem, path, bcrypt) {
       } else {
         return res.json({
           error: "Already regestered"
+        });
+      }
+    });
+  };
+};
+
+
+/*
+  Add items
+ */
+
+exports.item = function(db, fileSystem, path) {
+  return function(req, res) {
+    var item, tmp;
+    tmp = req.body;
+    if (!(tmp.name && tmp.description && req.files.picture && tmp.charge)) {
+      res.json({
+        error: "Form is incomplete"
+      });
+    }
+    item = {};
+    item.name = tmp.name;
+    item.description = tmp.description;
+    item.charge = tmp.charge;
+    item.status = 'available';
+    item.ownerId = req.session.user._id;
+    item.tags = [];
+    return db.collection('item').insert(item, function(err) {
+      if (err === null) {
+        return res.json(item);
+      } else {
+        return res.json({
+          error: "Internal error, try again"
         });
       }
     });

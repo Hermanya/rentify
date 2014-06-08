@@ -1,5 +1,5 @@
 (function() {
-  var app, bcrypt, db, express, fileSystem, get, http, mongodb, mongoskin, other, path, post;
+  var app, bcrypt, bodyParser, cookieParser, db, express, fileSystem, get, http, mongodb, mongoskin, other, path, post, session;
 
   express = require('express');
 
@@ -14,6 +14,12 @@
   path = require('path');
 
   fileSystem = require('fs');
+
+  bodyParser = require('body-parser');
+
+  cookieParser = require('cookie-parser');
+
+  session = require('express-session');
 
   mongodb = require('mongodb');
 
@@ -31,13 +37,29 @@
 
   app.set('view engine', 'ejs');
 
+  app.use(bodyParser());
+
+  app.use(cookieParser());
+
+  app.use(session({
+    secret: 'keyboard cat'
+  }));
+
   app.use(express["static"](path.join(__dirname, 'public')));
 
   app.get('/', other.root);
 
+  app.get('/singup', other.signup);
+
+  app.get('/get/me', get.me);
+
+  app.get('/get/debug', get.debug(mongodb, db));
+
   app.get('/get/user/:id', get.user(mongodb, db));
 
   app.post('/post/user', post.user(db, fileSystem, path, bcrypt));
+
+  app.post('/post/item', post.item(db, fileSystem, path, bcrypt));
 
   app.get('/logout', other.logout);
 
