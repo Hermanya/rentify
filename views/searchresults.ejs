@@ -31,18 +31,18 @@
     <div class="content">
       <ul class="table-view">
         
-
-
-        <li class="table-view-cell media">
-          <a class="navigate-right">
-            <img class="media-object pull-left" src="http://gobiking.ca/which-bike/comfort-bike-3-s.jpg" width="100" height="100">
-            <div class="media-body">
-              Item 1
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.</p>
-            </div>
-          </a>
-        </li>
-
+        <% for(var i = 0; i < items.length; i++) { %>
+            <li class="table-view-cell media">
+              <a class="navigate-right">
+                <img class="media-object pull-left" src="images/<%= items[i]._id %>" width="100" height="100">
+                <div class="media-body">
+                  <%= items[i].name %>
+                  <p><%= items[i].description %></p>
+                </div>
+              </a>
+            </li>
+        <% } %>
+        
       </ul>
     </div>
 

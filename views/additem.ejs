@@ -1,0 +1,56 @@
+<%- include header %>
+
+  <body>
+    <header class="bar bar-nav">
+      <h1 class="title">Add Item</h1>
+    </header>
+
+    <nav class="bar bar-tab">
+      <a class="tab-item" href="#">
+        <span class="icon icon-search"></span>
+        <span class="tab-label">Search</span>
+      </a>
+      <a class="tab-item" href="#">
+        <span class="icon icon-star"></span>
+        <span class="tab-label">Discover</span>
+      </a>
+      <a class="tab-item" href="#">
+        <span class="icon icon-person"></span>
+        <span class="tab-label">Profile</span>
+      </a>
+      <a class="tab-item" href="#">
+        <span class="icon icon-more"></span>
+        <span class="tab-label">About</span>
+      </a>
+      <a class="tab-item active" href="#">
+        <span class="icon icon-plus"></span>
+        <span class="tab-label">Add Posting</span>
+      </a>
+    </nav>
+
+    <div class="content">
+
+      <div class="content-padded">
+        <form method="POST" action="/post/item" enctype='multipart/form-data'>
+          What would you like to rent out?
+          <input name="name" type="text" />
+          Attach an image of a thing you want to rent
+          <ul class="table-view">
+            <li class="table-view-cell">
+              <input name="image" type="file" />
+            </li>
+          </ul>
+          How much would a day of renting cost?
+          <input name="charge" type="number" />
+          Tell us more about the thing you want to rent
+          <textarea name="description" size="4"></textarea>
+          <button type="submit" class="btn btn-primary btn-block">Add Item</button>
+        </form>
+      </div>
+
+    </div>
+
+  </body>
+
+
+<%- include footer %>
