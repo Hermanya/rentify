@@ -1,23 +1,27 @@
 (function() {
-  var app, bcrypt, db, express, get, http, mongodb, mongoskin, path;
+  var app, bcrypt, db, express, fileSystem, get, http, mongodb, mongoskin, other, path, post;
 
   express = require('express');
 
   get = require('./routes/get');
 
+  post = require('./routes/post');
+
+  other = require('./routes/index');
+
   http = require('http');
 
   path = require('path');
+
+  fileSystem = require('fs');
 
   mongodb = require('mongodb');
 
   mongoskin = require('mongoskin');
 
-  db = mongoskin.db("mongodb://root:ghlroedcnrwz@107.170.165.111:27017/rentify", {
+  db = mongoskin.db("mongodb://107.170.165.111:27017/rentify", {
     native_parser: true
   });
-
-  console.log(db);
 
   bcrypt = require('bcrypt');
 
@@ -28,6 +32,12 @@
   app.use(express["static"](path.join(__dirname, 'public')));
 
   app.get('/get/user', get.user(db));
+
+  app.post('/post/user', post.user(db, fileSystem, path, bcrypt));
+
+  app.get('/logout', other.logout);
+
+  app.get('/loginHandler', other.loginHandler(db, bcrypt));
 
   http.createServer(app).listen(app.get('port'), function() {
     return console.log("Express server listening on port " + app.get('port'));
