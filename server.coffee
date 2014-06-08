@@ -38,10 +38,11 @@ app.get '/discover', other.discover
 app.get '/about', other.about
 app.get '/add', other.add
 app.get '/me', get.me
+app.get '/item/:id', get.item mongodb, db
 app.get '/get/debug', get.debug mongodb, db
 app.get '/get/user/:id', get.user mongodb, db
 app.post '/register', post.user(db, fileSystem, path, bcrypt)
-app.post '/addItem', post.item(db, fileSystem, path)
+app.post '/post/item', post.item(db, fileSystem, path)
 app.get '/logout', other.logout
 app.post '/searchResults', get.searchResults(mongodb, db)
 app.post '/loginHandler', other.loginHandler db, bcrypt

@@ -35,7 +35,7 @@ exports.item = (mongodb, db) ->
       if err or item is null
         res.json({error: 'Not found'})
       else
-        res.json(item)
+        res.render 'item', item
     )
 
 exports.searchResults = (mongodb, db) ->

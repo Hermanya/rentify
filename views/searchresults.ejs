@@ -33,7 +33,7 @@
         
         <% for(var i = 0; i < items.length; i++) { %>
             <li class="table-view-cell media">
-              <a class="navigate-right">
+              <a class="navigate-right" href="/item/<%= items[i]._id %>">
                 <img class="media-object pull-left" src="images/<%= items[i]._id %>" width="100" height="100">
                 <div class="media-body">
                   <%= items[i].name %>

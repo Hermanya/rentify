@@ -51,7 +51,7 @@ exports.item = function(mongodb, db) {
           error: 'Not found'
         });
       } else {
-        return res.json(item);
+        return res.render('item', item);
       }
     });
   };
