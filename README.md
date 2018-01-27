@@ -1,5 +1,7 @@
 rentify
 =======
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Hermanya/rentify.svg)](https://greenkeeper.io/)
 A [sHackathon](http://insider.sheridancollege.ca/2014/06/09/sheridan-hackathon-a-success/) project, which took the first prize. 
 
 ![Discover](http://cs613531.vk.me/v613531556/e3cf/Nark4hgG4-M.jpg)
